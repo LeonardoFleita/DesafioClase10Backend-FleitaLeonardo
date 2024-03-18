@@ -1,4 +1,10 @@
+const [_, productManager] = require(`../../src/routes/viewsRouter`);
 const socket = io();
+
+const del = async (id) => {
+  alert(id);
+  await productManager.deleteProduct(id);
+};
 
 socket.on(`newProduct`, (product) => {
   const container = document.getElementById("productsContainer");
