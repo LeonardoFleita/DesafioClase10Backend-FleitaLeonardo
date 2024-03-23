@@ -1,10 +1,4 @@
-const [_, productManager] = require(`../../src/routes/viewsRouter`);
 const socket = io();
-
-const del = async (id) => {
-  alert(id);
-  await productManager.deleteProduct(id);
-};
 
 socket.on(`newProduct`, (product) => {
   const container = document.getElementById("productsContainer");
@@ -18,6 +12,10 @@ socket.on(`newProduct`, (product) => {
      <p>Código: ${product.code}</p>
      <p>Stock: ${product.stock}</p>
      <p>Id: ${product.id}</p>
+     <form action="/realtimeproducts/delete" method="post">
+
+     <button name="id" value="${product.id}" type="submit">Eliminar</button>
+   </form>
    </div>`;
 });
 
